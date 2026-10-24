@@ -1306,3 +1306,70 @@ tbody tr:hover {
 .dashboard-wordmark>span { color:#78a56b; }
 .dashboard-identity .eyebrow { font-size:8px; letter-spacing:1.3px; }
 @media(max-width:760px) { .dashboard-identity { margin-bottom:19px; } .dashboard-identity>img { width:45px; height:45px; } .dashboard-wordmark { font-size:24px; } }
+/* Frosted dashboard metrics: color sits behind the translucent card surfaces. */
+.stats {
+  position: relative;
+  isolation: isolate;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 8% 18%, #a9d8c391 0%, transparent 35%),
+    radial-gradient(ellipse at 48% 100%, #b6d7e68c 0%, transparent 38%),
+    radial-gradient(ellipse at 94% 25%, #ecdbac9c 0%, transparent 32%);
+}
+.stats .stat {
+  --glass-accent: #236d56;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  background: linear-gradient(135deg, #ffffffb8, #ffffff70);
+  border: 1px solid #ffffffec;
+  border-radius: 15px;
+  box-shadow: 0 7px 24px #294e3910, inset 0 1px 0 #fff, inset 0 -1px 0 #ffffff75;
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.stats .stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #ffffff80 0%, transparent 45%, #ffffff28 100%);
+  pointer-events: none;
+}
+.stats .stat > * { position: relative; }
+.stats .stat1 { --glass-accent: #417b83; }
+.stats .stat2 { --glass-accent: #557195; }
+.stats .stat3 { --glass-accent: #967126; }
+.stats .stat .flex { color: #52685c; gap: 8px; font-weight: 550; }
+.stats .stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid #ffffffd9;
+  border-radius: 11px;
+  background: #ffffff85;
+  box-shadow: 0 2px 7px #264c3a08, inset 0 1px 0 #fff;
+}
+.stats .stat-icon svg { color: var(--glass-accent); }
+.stats .stat h2 { color: #253f34; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stats .stat small { color: #64786b; }
+.stats .stat:hover {
+  transform: translateY(-3px);
+  border-color: #ffffff;
+  box-shadow: 0 12px 30px #294e391a, inset 0 1px 0 #fff, inset 0 -1px 0 #ffffff80;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .stats .stat { background: linear-gradient(135deg, #f3faf5, #fafbf7); }
+}
+@media (max-width: 760px) {
+  .stats .stat { border-radius: 12px; }
+  .stats .stat-icon { width: 28px; height: 28px; border-radius: 9px; }
+  .stats .stat-icon svg { width: 16px; height: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stats .stat:hover { transform: none; }
+}

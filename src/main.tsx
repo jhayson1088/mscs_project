@@ -610,7 +610,7 @@ function App() {
                   <div className={"stat stat" + i} key={label}>
                     <div className="flex">
                       <span>{label}</span>
-                      <Icon size={19} />
+                      <span className="stat-icon"><Icon size={19} /></span>
                     </div>
                     <h2>{value}</h2>
                     <small>{caption}</small>
