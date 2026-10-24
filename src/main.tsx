@@ -312,19 +312,7 @@ function App() {
                         {p.quantity} <span className="muted normal">units</span>
                       </strong>
                       <br />
-                      <span
-                        className={
-                          "badge " +
-                          (p.quantity === 0
-                            ? "red"
-                            : p.quantity <= p.threshold
-                              ? "amber"
-                              : "green")
-                        }
-                      >
-                        <i />
-                        {status(p)}
-                      </span>
+                      <StockBadge quantity={p.quantity} threshold={p.threshold} />
                     </td>
                     <td>
                       {money(p.cost)}
