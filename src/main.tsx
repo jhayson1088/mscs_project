@@ -657,7 +657,7 @@ function App() {
                     <div className="flex">
                       <span>{label}</span>
                       <span className="stat-icon">
-                        {i < 3 ? (
+                        {i === 0 || i === 2 ? (
                           <AnimatedIcon
                             name={i === 2 ? "value" : "inventory"}
                             fallback={<Icon size={19} />}
