@@ -207,7 +207,7 @@ function App() {
           <AnimatedIcon
             name="search"
             fallback={<Search size={17} />}
-            size={22}
+            size={26}
           />
           <Input
             aria-label="Search products"
@@ -507,7 +507,7 @@ function App() {
                         : "settings"
                   }
                   fallback={<Icon size={19} />}
-                  size={25}
+                  size={32}
                 />
               ) : (
                 <Icon size={19} />
@@ -661,7 +661,7 @@ function App() {
                           <AnimatedIcon
                             name={i === 2 ? "value" : "inventory"}
                             fallback={<Icon size={19} />}
-                            size={28}
+                            size={40}
                           />
                         ) : (
                           <Icon size={19} />
@@ -800,7 +800,7 @@ function App() {
                   <AnimatedIcon
                     name="search"
                     fallback={<Search size={17} />}
-                    size={22}
+                    size={26}
                   />
                   <Input
                     aria-label="Search movements"

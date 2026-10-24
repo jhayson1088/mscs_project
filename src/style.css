@@ -1556,3 +1556,16 @@ button.icon:hover { background:var(--tint); color:var(--accent); }
 @media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse) { .cursor-light { display:none; } }
 /* Keep each metric's glass surface without a shared colored backdrop. */
 .stats { background:transparent; }
+/* Give animated details more presence without crowding their labels. */
+.stats .stat-icon { width:48px; height:48px; border-radius:14px; }
+.stats .stat-icon>svg { width:24px; height:24px; }
+nav .MuiButton-root.nav-button { gap:12px; }
+.search>.animated-icon { top:7px; left:9px; }
+.search .MuiInputBase-input { padding-left:42px; }
+@media(max-width:760px) {
+  nav .animated-icon,nav .animated-icon lord-icon { width:26px!important; height:26px!important; }
+  nav .MuiButton-root.nav-button { gap:3px; padding-top:7px; }
+  .stats .stat-icon { width:40px; height:40px; border-radius:12px; }
+  .stats .stat-icon .animated-icon,.stats .stat-icon lord-icon { width:34px!important; height:34px!important; }
+  .stats .stat-icon>svg { width:22px; height:22px; }
+}
