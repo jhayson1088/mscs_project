@@ -1569,3 +1569,8 @@ nav .MuiButton-root.nav-button { gap:12px; }
   .stats .stat-icon .animated-icon,.stats .stat-icon lord-icon { width:34px!important; height:34px!important; }
   .stats .stat-icon>svg { width:22px; height:22px; }
 }
+/* Stock On You wordmarks fit both the compact rail and mobile dashboard. */
+a.brand { padding-left:0; padding-right:0; }
+.brand-name { font-size:16px; font-weight:700; letter-spacing:-.6px; white-space:nowrap; }
+.brand-heart { font-size:.85em; letter-spacing:0; }
+.dashboard-wordmark>.brand-heart { color:inherit; }

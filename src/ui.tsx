@@ -170,7 +170,7 @@ export function Modal({
       <DialogTitle component="div">
         <header>
           <div>
-            <span className="eyebrow">STOCKROOM</span>
+            <span className="eyebrow">STOCK ON YOU ❤️‍🔥</span>
             <h2 id={titleId}>{title}</h2>
           </div>
           <IconButton aria-label="Close dialog" onClick={close}>

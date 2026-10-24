@@ -170,7 +170,7 @@ export function validateBackup(raw: unknown): Backup {
       Array.isArray((b as any)[k]),
     )
   )
-    throw Error("Invalid Stockroom v1 backup.");
+    throw Error("Invalid Stock On You v1 backup.");
   const unique = (a: string[]) =>
     a.every((x) => typeof x === "string" && x.length > 0) &&
     new Set(a).size === a.length;

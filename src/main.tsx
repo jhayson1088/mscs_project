@@ -132,7 +132,7 @@ function App() {
         ) : (
           <>
             <LoaderCircle className="spin" />
-            <p>Opening your stockroom…</p>
+            <p>Opening Stock On You ❤️‍🔥…</p>
           </>
         )}
       </div>
@@ -192,7 +192,7 @@ function App() {
           );
         const a = document.createElement("a");
         a.href = url;
-        a.download = `stockroom-${new Date().toISOString().slice(0, 10)}.json`;
+        a.download = `stock-on-you-${new Date().toISOString().slice(0, 10)}.json`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       },
@@ -474,7 +474,7 @@ function App() {
             width="40"
             height="40"
           />
-          stockroom<span className="brand-dot">.</span>
+          <span className="brand-name">Stock On You <span className="brand-heart">❤️‍🔥</span></span>
         </a>
         <div className="workspace">
           <span className="workspace-icon">S</span>
@@ -558,13 +558,13 @@ function App() {
                 <div className="dashboard-identity">
                   <img
                     src="/stockroom-mark.svg"
-                    alt="Stockroom custom S monogram with stocked shelves"
+                    alt="Stock On You logo — S monogram with stocked shelves"
                     width="52"
                     height="52"
                   />
                   <div>
                     <span className="dashboard-wordmark">
-                      stockroom<span>.</span>
+                      Stock On You <span className="brand-heart">❤️‍🔥</span>
                     </span>
                     <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>
                   </div>
@@ -579,7 +579,7 @@ function App() {
               </h1>
               <p>
                 {page === "Dashboard"
-                  ? "Here’s what’s happening in your stockroom."
+                  ? "Here’s what’s happening in your inventory."
                   : page === "Products"
                     ? "A home for every product. Keep the details in order."
                     : page === "Movements"
@@ -1064,7 +1064,7 @@ function App() {
               <ShieldCheck size={14} /> Stored locally. Backed by you.
             </span>
             <span>
-              Stockroom · A place for everything.{" "}
+              Stock On You ❤️‍🔥 · A place for everything.{" "}
               <a
                 href="https://lordicon.com/"
                 target="_blank"

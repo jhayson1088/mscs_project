@@ -1,4 +1,4 @@
-# Stockroom
+# Stock On You ❤️‍🔥
 
 A browser-local inventory app built with React, Vite, TypeScript, Material UI, Tailwind CSS, Lucide, and Dexie.
 
