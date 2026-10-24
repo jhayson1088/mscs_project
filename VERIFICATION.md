@@ -10,3 +10,5 @@
 - Blue theme: light and dark desktop layouts visually checked; dark product dialog checked; 390 px mobile layout checked; dark mode preference verified after refresh.
 
 - Lordicon: official React player installed; CDN icon ready states verified in the browser; settings icon playing state observed after focus; navigation confirmed; no browser console errors; production build passed.
+
+- Dark atmosphere: central halo visually checked; cursor movement verified to activate three gradient layers at progressively delayed positions. Trail is behind the app with pointer events disabled; cleanup, touch exclusion, and reduced-motion exclusion checked in source.

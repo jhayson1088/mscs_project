@@ -1,3 +1,4 @@
+import {BackgroundAtmosphere} from "./BackgroundAtmosphere";
 import React, { useId, useState, useMemo, useEffect, createContext, useContext } from "react";
 import MuiButton from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -21,7 +22,7 @@ const makeTheme = (mode:Mode) => createTheme({
     mode,
     primary: { main: mode === "dark" ? "#82c5ff" : "#2369ce", dark: "#164fa5", light: "#e5f1ff", contrastText: mode === "dark" ? "#0b203b" : "#ffffff" },
     secondary: {main: "#58b9ec"},
-    background: { default: mode === "dark" ? "#0b1425" : "#f2f7fd", paper: mode === "dark" ? "#142238" : "#ffffff" },
+    background: { default: mode === "dark" ? "#050914" : "#f2f7fd", paper: mode === "dark" ? "#142238" : "#ffffff" },
     text: { primary: mode === "dark" ? "#e5eefc" : "#172e50", secondary: mode === "dark" ? "#a6bad5" : "#647c9b" },
     divider: mode === "dark" ? "#2a3d57" : "#dce7f5",
   },
@@ -64,8 +65,8 @@ const makeTheme = (mode:Mode) => createTheme({
 export function AppTheme({ children }: { children: React.ReactNode }) {
   const [mode,setMode]=useState<Mode>(()=>{try{return localStorage.getItem("stockroom-color-mode")==="dark"?"dark":"light"}catch{return "light"}});
   const theme=useMemo(()=>makeTheme(mode),[mode]);
-  useEffect(()=>{document.documentElement.dataset.theme=mode;document.documentElement.style.colorScheme=mode;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",mode==="dark"?"#0b1425":"#2369ce");try{localStorage.setItem("stockroom-color-mode",mode)}catch{}},[mode]);
-  return <ColorMode.Provider value={{mode,toggle:()=>setMode(m=>m==="light"?"dark":"light")}}><ThemeProvider theme={theme}><CssBaseline />{children}</ThemeProvider></ColorMode.Provider>;
+  useEffect(()=>{document.documentElement.dataset.theme=mode;document.documentElement.style.colorScheme=mode;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",mode==="dark"?"#050914":"#2369ce");try{localStorage.setItem("stockroom-color-mode",mode)}catch{}},[mode]);
+  return <ColorMode.Provider value={{mode,toggle:()=>setMode(m=>m==="light"?"dark":"light")}}><ThemeProvider theme={theme}><CssBaseline />{mode === "dark" && <BackgroundAtmosphere />}{children}</ThemeProvider></ColorMode.Provider>;
 }
 export function ThemeToggle(){const{mode,toggle}=useContext(ColorMode);return <FormControlLabel className="theme-toggle" control={<Switch size="small" checked={mode==="dark"} onChange={toggle} slotProps={{input:{"aria-label":"Dark mode"}}}/>} label={mode==="dark"?"Dark mode":"Light mode"}/>}
 export function Button({

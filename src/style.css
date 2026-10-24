@@ -1511,3 +1511,46 @@ button.icon:hover { background:var(--tint); color:var(--accent); }
   .main-footer a { display:inline-block; margin-left:0; }
   .stats .stat-icon .animated-icon,.stats .stat-icon lord-icon { width:24px!important; height:24px!important; }
 }
+/* Dark mode atmosphere: a central halo and soft light in the pointer's wake. */
+:root[data-theme="dark"] { --canvas:#050914; }
+:root[data-theme="dark"] body { background:#050914; }
+.app { position:relative; z-index:1; }
+:root[data-theme="dark"] .main { background:transparent; }
+.background-atmosphere { position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:#050914; }
+.ambient-orb {
+  position:absolute;
+  width:min(1100px,110vw);
+  aspect-ratio:1;
+  left:calc(50% + 100px);
+  top:48%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at center,#2164c42b 0%,#304fc52b 17%,#144c8923 33%,#12234714 49%,transparent 68%);
+}
+.ambient-orb::after {
+  content:"";
+  position:absolute;
+  inset:19%;
+  border-radius:50%;
+  background:radial-gradient(circle,#60afff06 30%,#5195ff0c 58%,transparent 72%);
+  box-shadow:0 0 100px 30px #3569d405;
+}
+.cursor-light {
+  position:absolute;
+  left:0;
+  top:0;
+  width:390px;
+  aspect-ratio:1;
+  border-radius:50%;
+  opacity:0;
+  will-change:transform;
+  transition:opacity .65s ease;
+  background:radial-gradient(circle,#4089ed30 0%,#3478e51b 30%,transparent 68%);
+}
+.cursor-light-cyan { width:290px; background:radial-gradient(circle,#47c9f623 0%,#389af413 32%,transparent 69%); }
+.cursor-light-violet { width:340px; background:radial-gradient(circle,#7b65ee29 0%,#6b4cdb12 32%,transparent 69%); }
+.background-atmosphere[data-active] .cursor-light { opacity:1; }
+:root[data-theme="dark"] .panel { background:#121e30ed; }
+:root[data-theme="dark"] .topbar { background:#101b2df2; }
+@media(max-width:760px) { .ambient-orb { left:50%; top:45%; width:145vw; } }
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse) { .cursor-light { display:none; } }
