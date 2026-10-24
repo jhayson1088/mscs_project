@@ -1,5 +1,6 @@
 import {
   AppTheme,
+  ThemeToggle,
   Button,
   Input,
   TextArea,
@@ -513,9 +514,7 @@ function App() {
           <span>
             Workspace <ChevronRight size={14} /> <strong>{page}</strong>
           </span>
-          <span className="saved">
-            <i /> Saved on this device
-          </span>
+          <div className="topbar-tools"><span className="saved"><i /> Saved on this device</span><ThemeToggle /></div>
         </div>
         <main>
           <div className="page-heading">

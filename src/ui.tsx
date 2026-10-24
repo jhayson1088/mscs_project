@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useId, useState, useMemo, useEffect, createContext, useContext } from "react";
 import MuiButton from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -12,12 +12,18 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-const theme = createTheme({
+import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
+type Mode = "light" | "dark";
+const ColorMode = createContext<{mode:Mode; toggle:()=>void}>({mode:"light",toggle:()=>{}});
+const makeTheme = (mode:Mode) => createTheme({
   palette: {
-    primary: { main: "#196c55", dark: "#104f3e", light: "#eaf4ee" },
-    background: { default: "#f7f9f8", paper: "#fff" },
-    text: { primary: "#253c35", secondary: "#7b8b83" },
-    divider: "#e1e7e2",
+    mode,
+    primary: { main: mode === "dark" ? "#82c5ff" : "#2369ce", dark: "#164fa5", light: "#e5f1ff", contrastText: mode === "dark" ? "#0b203b" : "#ffffff" },
+    secondary: {main: "#58b9ec"},
+    background: { default: mode === "dark" ? "#0b1425" : "#f2f7fd", paper: mode === "dark" ? "#142238" : "#ffffff" },
+    text: { primary: mode === "dark" ? "#e5eefc" : "#172e50", secondary: mode === "dark" ? "#a6bad5" : "#647c9b" },
+    divider: mode === "dark" ? "#2a3d57" : "#dce7f5",
   },
   shape: { borderRadius: 10 },
   typography: {
@@ -33,18 +39,18 @@ const theme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: { background: "#fff", borderRadius: 8, fontSize: 13 },
-        notchedOutline: { borderColor: "#dce3df" },
+        root: { background: mode === "dark" ? "#101e32" : "#fff", borderRadius: 8, fontSize: 13 },
+        notchedOutline: { borderColor: mode === "dark" ? "#3b506c" : "#cbdcf1" },
       },
     },
     MuiDialog: {
       styleOverrides: {
-        paper: { borderRadius: 16, boxShadow: "0 24px 100px #1c3b382b" },
+        paper: { backgroundImage: "none", borderRadius: 16, boxShadow: "0 24px 100px #020b284d" },
       },
     },
     MuiBackdrop: {
       styleOverrides: {
-        root: { backgroundColor: "#152e2566", backdropFilter: "blur(3px)" },
+        root: { backgroundColor: "#07152a99", backdropFilter: "blur(3px)" },
       },
     },
     MuiChip: {
@@ -52,17 +58,16 @@ const theme = createTheme({
         root: { borderRadius: 6, height: 23, fontSize: 10, fontWeight: 550 },
       },
     },
-    MuiTableCell: { styleOverrides: { root: { borderColor: "#edf1ed" } } },
+    MuiTableCell: { styleOverrides: { root: { borderColor: mode === "dark" ? "#2a3d57" : "#dce7f5" } } },
   },
 });
 export function AppTheme({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
-  );
+  const [mode,setMode]=useState<Mode>(()=>{try{return localStorage.getItem("stockroom-color-mode")==="dark"?"dark":"light"}catch{return "light"}});
+  const theme=useMemo(()=>makeTheme(mode),[mode]);
+  useEffect(()=>{document.documentElement.dataset.theme=mode;document.documentElement.style.colorScheme=mode;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",mode==="dark"?"#0b1425":"#2369ce");try{localStorage.setItem("stockroom-color-mode",mode)}catch{}},[mode]);
+  return <ColorMode.Provider value={{mode,toggle:()=>setMode(m=>m==="light"?"dark":"light")}}><ThemeProvider theme={theme}><CssBaseline />{children}</ThemeProvider></ColorMode.Provider>;
 }
+export function ThemeToggle(){const{mode,toggle}=useContext(ColorMode);return <FormControlLabel className="theme-toggle" control={<Switch size="small" checked={mode==="dark"} onChange={toggle} slotProps={{input:{"aria-label":"Dark mode"}}}/>} label={mode==="dark"?"Dark mode":"Light mode"}/>}
 export function Button({
   className = "",
   type = "button",
@@ -194,20 +199,9 @@ export function StockBadge({
       className="stock-chip"
       size="small"
       label={state}
-      sx={{
-        backgroundColor:
-          quantity === 0
-            ? "#faeeea"
-            : quantity <= threshold
-              ? "#fbf4df"
-              : "#edf5ef",
-        color:
-          quantity === 0
-            ? "#b9786b"
-            : quantity <= threshold
-              ? "#a2863c"
-              : "#51886a",
-      }}
+      color={quantity === 0 ? "error" : quantity <= threshold ? "warning" : "info"}
+      variant="outlined"
+      sx={{fontWeight:600}}
     />
   );
 }
@@ -229,7 +223,7 @@ export function Feedback({
         variant="filled"
         severity="success"
         onClose={clear}
-        sx={{ boxShadow: 3 }}
+        sx={{ boxShadow: 3, backgroundColor: "#205b9b" }}
       >
         {message}
       </Alert>

@@ -19,6 +19,8 @@ npm run build
 npm run preview
 ```
 
+Use the **Light mode / Dark mode** switch in the top bar to change appearance. Your preference stays in this browser.
+
 ## Keep stock accurate
 
 Create categories from **Categories**. Add products with unique SKUs, prices, initial quantities, and low-stock thresholds. Initial stock creates a history entry automatically.

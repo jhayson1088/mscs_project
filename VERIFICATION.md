@@ -6,3 +6,5 @@
 - Export UI displayed successful export feedback. Browser download access was subsequently declined, so file download and restore through the browser picker were not verified end to end. Backup/restore database operations passed automated checks.
 - Production dependency audit: zero vulnerabilities.
 - Cloudflare deployment is configured but blocked by missing Workers/Pages permissions in the connected account and no local Wrangler login.
+
+- Blue theme: light and dark desktop layouts visually checked; dark product dialog checked; 390 px mobile layout checked; dark mode preference verified after refresh.
