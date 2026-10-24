@@ -1496,3 +1496,18 @@ button.icon:hover { background:var(--tint); color:var(--accent); }
   .theme-toggle .MuiFormControlLabel-label { font-size:10px; }
   nav .MuiButton-root.nav-button.active { border:0; box-shadow:inset 0 3px 0 #8acbff; }
 }
+.animated-icon { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; color:inherit; vertical-align:middle; pointer-events:none; }
+.animated-icon lord-icon { display:inline-block; flex-shrink:0; }
+.animated-icon>svg { position:static; }
+.stat-icon .animated-icon { color:var(--glass-accent); }
+.search>.animated-icon { position:absolute; top:9px; left:10px; z-index:1; color:var(--subtle); }
+.search .animated-icon svg { position:static; }
+.main-footer a { color:var(--accent); text-underline-offset:3px; margin-left:8px; }
+@media(max-width:760px) {
+  nav .animated-icon { width:20px!important; height:20px!important; }
+  nav .animated-icon lord-icon { width:20px!important; height:20px!important; }
+  .main-footer { flex-wrap:wrap; }
+  .main-footer>span:last-child { display:block; }
+  .main-footer a { display:inline-block; margin-left:0; }
+  .stats .stat-icon .animated-icon,.stats .stat-icon lord-icon { width:24px!important; height:24px!important; }
+}

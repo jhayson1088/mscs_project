@@ -9,6 +9,7 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
+          animations: ["@lordicon/react"],
           material: ["@mui/material", "@emotion/react", "@emotion/styled"],
           database: ["dexie", "dexie-react-hooks"],
         },

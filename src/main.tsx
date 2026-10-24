@@ -1,3 +1,4 @@
+import { AnimatedIcon } from "./AnimatedIcon";
 import {
   AppTheme,
   ThemeToggle,
@@ -203,7 +204,11 @@ function App() {
     <>
       <div className="filters">
         <div className="search">
-          <Search size={17} />
+          <AnimatedIcon
+            name="search"
+            fallback={<Search size={17} />}
+            size={22}
+          />
           <Input
             aria-label="Search products"
             placeholder="Search by name or SKU…"
@@ -313,7 +318,10 @@ function App() {
                         {p.quantity} <span className="muted normal">units</span>
                       </strong>
                       <br />
-                      <StockBadge quantity={p.quantity} threshold={p.threshold} />
+                      <StockBadge
+                        quantity={p.quantity}
+                        threshold={p.threshold}
+                      />
                     </td>
                     <td>
                       {money(p.cost)}
@@ -459,7 +467,13 @@ function App() {
             setPage("Dashboard");
           }}
         >
-          <img className="brand-mark" src="/stockroom-mark.svg" alt="" width="40" height="40" />
+          <img
+            className="brand-mark"
+            src="/stockroom-mark.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
           stockroom<span className="brand-dot">.</span>
         </a>
         <div className="workspace">
@@ -481,7 +495,23 @@ function App() {
                 setError("");
               }}
             >
-              <Icon size={19} />
+              {name === "Dashboard" ||
+              name === "Products" ||
+              name === "Settings" ? (
+                <AnimatedIcon
+                  name={
+                    name === "Dashboard"
+                      ? "dashboard"
+                      : name === "Products"
+                        ? "inventory"
+                        : "settings"
+                  }
+                  fallback={<Icon size={19} />}
+                  size={25}
+                />
+              ) : (
+                <Icon size={19} />
+              )}
               <span>{name}</span>
               {name === "Products" && <em>{active.length}</em>}
             </Button>
@@ -514,17 +544,34 @@ function App() {
           <span>
             Workspace <ChevronRight size={14} /> <strong>{page}</strong>
           </span>
-          <div className="topbar-tools"><span className="saved"><i /> Saved on this device</span><ThemeToggle /></div>
+          <div className="topbar-tools">
+            <span className="saved">
+              <i /> Saved on this device
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
         <main>
           <div className="page-heading">
             <div>
               {page === "Dashboard" ? (
                 <div className="dashboard-identity">
-                  <img src="/stockroom-mark.svg" alt="Stockroom custom S monogram with stocked shelves" width="52" height="52" />
-                  <div><span className="dashboard-wordmark">stockroom<span>.</span></span><span className="eyebrow">YOUR INVENTORY, IN ORDER</span></div>
+                  <img
+                    src="/stockroom-mark.svg"
+                    alt="Stockroom custom S monogram with stocked shelves"
+                    width="52"
+                    height="52"
+                  />
+                  <div>
+                    <span className="dashboard-wordmark">
+                      stockroom<span>.</span>
+                    </span>
+                    <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>
+                  </div>
                 </div>
-              ) : <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>}
+              ) : (
+                <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>
+              )}
               <h1>
                 {page === "Dashboard"
                   ? "A little clarity. A lot of control."
@@ -609,7 +656,17 @@ function App() {
                   <div className={"stat stat" + i} key={label}>
                     <div className="flex">
                       <span>{label}</span>
-                      <span className="stat-icon"><Icon size={19} /></span>
+                      <span className="stat-icon">
+                        {i < 3 ? (
+                          <AnimatedIcon
+                            name={i === 2 ? "value" : "inventory"}
+                            fallback={<Icon size={19} />}
+                            size={28}
+                          />
+                        ) : (
+                          <Icon size={19} />
+                        )}
+                      </span>
                     </div>
                     <h2>{value}</h2>
                     <small>{caption}</small>
@@ -740,7 +797,11 @@ function App() {
               </div>
               <div className="filters">
                 <div className="search">
-                  <Search size={17} />
+                  <AnimatedIcon
+                    name="search"
+                    fallback={<Search size={17} />}
+                    size={22}
+                  />
                   <Input
                     aria-label="Search movements"
                     placeholder="Search product, SKU or reason…"
@@ -1002,7 +1063,16 @@ function App() {
             <span>
               <ShieldCheck size={14} /> Stored locally. Backed by you.
             </span>
-            <span>Stockroom · A place for everything.</span>
+            <span>
+              Stockroom · A place for everything.{" "}
+              <a
+                href="https://lordicon.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Animated icons by Lordicon
+              </a>
+            </span>
           </footer>
         </main>
       </div>

@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@lordicon/react": "^2.0.0",
     "@mui/material": "^9.5.0",
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",

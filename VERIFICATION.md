@@ -8,3 +8,5 @@
 - Cloudflare deployment is configured but blocked by missing Workers/Pages permissions in the connected account and no local Wrangler login.
 
 - Blue theme: light and dark desktop layouts visually checked; dark product dialog checked; 390 px mobile layout checked; dark mode preference verified after refresh.
+
+- Lordicon: official React player installed; CDN icon ready states verified in the browser; settings icon playing state observed after focus; navigation confirmed; no browser console errors; production build passed.

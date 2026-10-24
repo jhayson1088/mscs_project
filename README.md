@@ -46,9 +46,12 @@ npm run deploy
 
 The included `wrangler.jsonc` serves `dist` as a static single-page app named `mscs-stockroom`. No backend, database service, API keys in source, or paid services are required. The deployment command prints your live URL.
 
+Animated icons are provided by [Lordicon](https://lordicon.com/) through its official React player and CDN. They play on hover or keyboard focus. Reduced-motion preferences use static icons, and unavailable animations fall back to Lucide.
+
 ## Source layout
 
 - `src/db.ts`: IndexedDB schema, validated product operations, atomic stock/history updates, backups, sample data.
+- `src/AnimatedIcon.tsx`: Lordicon embeds, inherited theme colors, and static fallbacks.
 - `src/ui.tsx`: Material UI theme and reusable controls, dialogs, fields, feedback, stock badges.
 - `src/main.tsx`: dashboard, products, movements, categories, settings and responsive navigation.
 - `src/style.css`: layout, responsive cards/table, focus and motion preferences.
