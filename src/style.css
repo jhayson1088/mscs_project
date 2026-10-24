@@ -1298,3 +1298,11 @@ tbody tr:hover {
     padding: 20px;
   }
 }
+.brand .brand-mark { width:40px; height:40px; margin-right:10px; flex-shrink:0; }
+.dashboard-identity { display:flex; align-items:center; gap:13px; margin-bottom:22px; }
+.dashboard-identity>img { width:52px; height:52px; filter:drop-shadow(0 4px 7px #196c5514); }
+.dashboard-identity>div { display:flex; flex-direction:column; gap:4px; }
+.dashboard-wordmark { font-size:26px; font-weight:750; letter-spacing:-1px; line-height:1.1; color:#253f34; }
+.dashboard-wordmark>span { color:#78a56b; }
+.dashboard-identity .eyebrow { font-size:8px; letter-spacing:1.3px; }
+@media(max-width:760px) { .dashboard-identity { margin-bottom:19px; } .dashboard-identity>img { width:45px; height:45px; } .dashboard-wordmark { font-size:24px; } }

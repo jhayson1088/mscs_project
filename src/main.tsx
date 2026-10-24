@@ -458,9 +458,7 @@ function App() {
             setPage("Dashboard");
           }}
         >
-          <span>
-            <Boxes size={23} />
-          </span>
+          <img className="brand-mark" src="/stockroom-mark.svg" alt="" width="40" height="40" />
           stockroom<span className="brand-dot">.</span>
         </a>
         <div className="workspace">
@@ -522,7 +520,12 @@ function App() {
         <main>
           <div className="page-heading">
             <div>
-              <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>
+              {page === "Dashboard" ? (
+                <div className="dashboard-identity">
+                  <img src="/stockroom-mark.svg" alt="Stockroom custom S monogram with stocked shelves" width="52" height="52" />
+                  <div><span className="dashboard-wordmark">stockroom<span>.</span></span><span className="eyebrow">YOUR INVENTORY, IN ORDER</span></div>
+                </div>
+              ) : <span className="eyebrow">YOUR INVENTORY, IN ORDER</span>}
               <h1>
                 {page === "Dashboard"
                   ? "A little clarity. A lot of control."
