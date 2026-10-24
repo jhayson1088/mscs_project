@@ -558,7 +558,7 @@ function App() {
                 <div className="dashboard-identity">
                   <img
                     src="/stockroom-mark.svg"
-                    alt="Stock On You logo — S monogram with stocked shelves"
+                    alt="Stock On You heart logo"
                     width="52"
                     height="52"
                   />
